@@ -26,3 +26,28 @@ jobs:
       - run:
           name: Install backend dependencies
           command: npm run backend:install
+          #Building and Deploying the App              
+      - run:
+          name: Building Front-End 
+          command: npm run frontend:build
+      - run:
+          name: Building Back-End 
+          command: npm run backend:build            
+      - run:
+          name: Deploy frontend
+          command: |
+            npm run frontend:deploy
+      - run:
+          name: Deploy backend
+          command: |
+            npm run backend:deploy
+            
+#instructions about the order of the jobs            
+workflows:
+  Deploy:                  
+    jobs:
+      - build:  
+          filters:
+            branches:
+               only:                
+                  - main
