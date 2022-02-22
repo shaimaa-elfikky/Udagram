@@ -14,7 +14,8 @@
     "clean": "rm -rf www/ || true",
     "build": "npm run clean && tsc && cp -rf src/config www/config && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy":"eb setenv POSTGRES_HOST=database-1.cnurbosflc18.us-east-1.rds.amazonaws.com DB_PORT=5432 PORT=4000 POSTGRES_PASSWORD=shaimaa79 POSTGRES_USERNAME=postgres RDS_DIALECT=postgres POSTGRES_DB=udagram AWS_DEFAULT_REGION=us-east-1 AWS_PROFILE=480058863462 AWS_BUCKET=mydeployment-project-480058863462 URL=http://mydeployment-project-480058863462.s3-website.eu-central-1.amazonaws.com AWS_ACCESS_KEY_ID=AKIAW7RN455TMEBR4SP6 AWS_SECRET_ACCESS_KEY=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 JWT_SECRET=hello-from-other-side"
+    "deploy":"chmod +x ./bin/deploy.sh && ./bin/deploy.sh"
+
   },
   "keywords": [],
   "author": "Gabriel Ruttner",
