@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "chmod +x \"./bin/depoly.sh\" && \"./bin/depoly.sh\""
+    "deploy": "chmod +x \"bin/depoly.sh\" && \"bin/depoly.sh\""
   },
   "private": true,
   "dependencies": {
