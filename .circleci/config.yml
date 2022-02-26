@@ -1,31 +1,32 @@
-#the version of the platform our pipeline:
+# the version of the platform our pipeline:
 version: 2.1
 
-#set of instructions created by CircleCi that allow us to configure the pipeline(used to setup node.js or install the AWS CLI)
+#the instructions created by CircleCi :
 orbs:
   node: circleci/node@5.0.0
   aws-cli: circleci/aws-cli@2.0.6
   eb: circleci/aws-elastic-beanstalk@2.0.1
   
-#groups of commands that we want to run
+#groups of commands that we want to run:
 jobs:
   build:
     docker:
-      - image: 'cimg/base:stable'
+      - image: "cimg/node:16.13.2"
     steps:
       - node/install
       - checkout
       - aws-cli/setup
       - eb/setup
       
-#Installing dependancies
+#installing dependancies:
+      - run:
           name: Install frontend dependencies
-          command: npm run frontend:install
+          command: npm run frontend:install       
+        
       - run:
           name: Install backend dependencies
           command: npm run backend:install
-          
-#Building and Deploying the App              
+          #Building and Deploying the App              
       - run:
           name: Building Front-End 
           command: npm run frontend:build
@@ -50,4 +51,3 @@ workflows:
             branches:
                only:                
                   - main
-

@@ -11,3 +11,5 @@ Build backend.
 Deploy frontend to S3.
 Deploy backend to Elastic Beanstalk.
 sit the eb environment variables.
+
+[Pipeline](/image/pipeline.jpg.jpg)
